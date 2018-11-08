@@ -4,6 +4,6 @@ Passo a passo tirado de diversos tutoriais e artigos da Internet, foi ajustado d
 
 Tabém foi configurado um LACP no servidor para um maior trafégo de dados.
 
-[Instalação e configuração](/install-bacula.md) - Bacula
+[Instalação e configuração](/bacula/install-bacula.md) - Bacula
 
-[Configuração](/lacp-ubuntu.md) - LACP
+[Configuração](/bacula/lacp-ubuntu.md) - LACP
