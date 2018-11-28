@@ -1,5 +1,5 @@
 ## Linux
-Conteúdo para distribuições Linux e suas configurações.
+Conteúdo para distribuições Linux, e configurações para respectivos serviços instalados no mesmo.
 
 [Bacula](/bacula) - Instalação e configurações do Bacula.
 
