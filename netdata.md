@@ -1,4 +1,4 @@
-## Instalando NETDATA no Debian.
+## Instalando NETDATA.
 
 
 1. ##### Instalar dependencias:
