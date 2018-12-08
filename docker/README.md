@@ -1,4 +1,4 @@
-![alt tag](https://developers.redhat.com/blog/wp-content/uploads/2015/01/docker-whale-home-logo.png)
+![alt text](https://developers.redhat.com/blog/wp-content/uploads/2015/01/docker-whale-home-logo.png)
 
 ------
 
