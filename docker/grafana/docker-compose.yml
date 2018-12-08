@@ -1,0 +1,20 @@
+version: '2'
+networks:
+    web:
+        external: true
+services:
+   grafana-xxl:
+      image: grafana/grafana
+      hostname: grafana-server
+      volumes:
+            - grafana-lib:/var/lib/grafana
+        labels:
+            - "traefik.backend=grafana-xxl"
+            - "traefik.enable=true"
+            - "traefik.frontend.rule=Host:grafana.deltasolutions.net.br"
+            - "traefik.docker.network=web"
+            - "traefik.port=3000"
+        networks:
+            - web
+volumes:
+  grafana-lib:
