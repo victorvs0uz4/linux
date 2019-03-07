@@ -4,6 +4,8 @@ Passo a passo tirado de diversos tutoriais e artigos da Internet, foi ajustado d
 
 Tabém foi configurado um LACP no servidor para um maior trafégo de dados.
 
-[Instalação e configuração](/bacula/install-bacula.md) - Bacula
+[Instalação e configuração](/bacula/install-bacula.md) - Bacula Server
+
+[Instalando e configurando o agente Linux](/bacula/bacula-agent-linux.md) - Agente para Distribuição Linux
 
 [Configuração](/bacula/lacp-ubuntu.md) - LACP
