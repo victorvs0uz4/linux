@@ -83,3 +83,7 @@ network:
             dhcp4: false
             optional: true
 ```
+Apply the network interface configuration changes:
+```bash
+sudo netplan --debug apply
+```
