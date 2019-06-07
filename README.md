@@ -7,6 +7,6 @@ Conteúdo para distribuições Linux, e configurações para respectivos serviç
 
 [Netdata](/netdata.md) - Instalando NETDATA - Debian/Ubuntu.
 
-[NTP-Server](/ntp-server.md) - Servidor NTP
+[NTP - Server](/ntp-server.md) - Servidor NTP
 
 [Docker](/docker) - Docker e seus recursos.
