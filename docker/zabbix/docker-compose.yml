@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  zabbix-db:
+    image: monitoringartist/zabbix-db-mariadb
+    restart: always
+    volumes:
+      - zabbix-db-storage:/var/lib/mysql
+      - backups:/backups
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - zabbix-bck
+    environment:
+      - MARIADB_USER=zabbix
+      - MARIADB_PASS=zabbix
+    labels:
+      - "traefik.enable=false"
+  zabbix-server:
+    image: monitoringartist/dockbix-xxl
+    restart: always
+    networks:
+      - zabbix-bck
+      - web
+    ports:
+      - "161:161/udp"
+      - "10051:10051"
+    labels:
+      - "traefik.enabled=true"
+      - "traefik.backend=zabbix"
+      - "traefik.frontend.rule=Host:zabbix.deltasolutions.net.br"
+      - "traefik.docker.network=web"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - zabbix-db:zabbix.db
+    environment:
+      - ZS_DBHost=zabbix.db
+      - ZS_DBUser=zabbix
+      - ZS_DBPassword=zabbix
+
+volumes:
+  zabbix-db-storage:
+    driver: local
+  backups:
+    driver: local
+
+networks:
+  zabbix-bck:
+    driver: bridge
+  web:
+    external: true

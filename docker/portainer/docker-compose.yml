@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  portainer:
+    image: portainer/portainer
+      container_name: portainer
+      labels:
+        - traefik.backend=portainer
+        - traefik.enable=true
+        - traefik.frontend.rule=Host:portainer.deltasolutions.net.br
+        - traefik.docker.network=web
+        - traefik.port=9000
+      command: -H unix:///var/run/docker.sock
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - portainer_data:/data
+      networks:
+        - web
+      expose:
+        - '9000'
+
+networks:
+  web:
+    external: true
+
+volumes:
+  portainer_data:

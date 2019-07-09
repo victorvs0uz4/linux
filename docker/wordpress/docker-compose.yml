@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    labels:
+      - traefik.enable=false
+    networks:
+      - wp_back
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    
+  wordpress:
+    depends_on:
+      - mysql
+    image: wordpress
+    labels:
+      - "traefik.backend=wordpress"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:deltasolutions.net.br"
+      - "traefik.docker.network=web"
+      - "traefik.port=80"
+    restart: always
+    networks:
+      - wp_back
+      - web
+    expose:
+      - "80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - wp_data:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+
+volumes:
+  db_data:
+  wp_data:
+
+networks:
+  wp_back:
+    driver: bridge
+  web:
+    external: true
